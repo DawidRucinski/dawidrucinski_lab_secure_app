@@ -18,5 +18,12 @@ jobs:
           docker pull mixeway/scanner:latest
       - name: Run Scan
         run: |
-          mvn package
+          docker run -e OSS_USERNAME=oyh22814@zslsz.com -e
+          OSS_KEY=59ae2bcf14245eae7c433e7ff73efe27befbca56 -e
+          MIXEWAY_URL=https://hub.mixeway.io -e
+          MIXEWAY_KEY=2cf83e6a-bd6f-4f9c-9f56-cab601e0eb31 -e
+          MIXEWAY_PROJECT_ID=122 -e MODE=STANDALONE -e
+          MIXEWAY_PROJECT_NAME=dawidrucinski_lab_secure_app -e COMMIT_ID=test -e
+          BRANCH=master -v /opt/lab_sec_audit/sast:/opt/sources
+          mixeway/scanner:latest
           
